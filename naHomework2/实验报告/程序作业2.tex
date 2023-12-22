@@ -1,0 +1,206 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{float,indentfirst,verbatim,fancyhdr,graphicx,listings,longtable,amsmath, amsfonts,amssymb}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{lscape}
+\textheight 23.5cm \textwidth 15.8cm
+%\leftskip -1cm
+\topmargin -1.5cm \oddsidemargin 0.3cm \evensidemargin -0.3cm
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}   % 网页链接
+\usepackage{subcaption} % 子标题
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry} %页边距
+\usepackage{helvet}
+\usepackage{amsmath, amsfonts, amssymb} % 数学公式、符号
+%\usepackage[english]{babel}
+\usepackage{graphicx}   % 图片
+\usepackage{url}        % 超链接
+\usepackage{bm}         % 加粗方程字体
+\usepackage{multirow}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{esint}
+\usepackage{hyperref} %bookmarks
+\usepackage{fancyhdr} %设置页眉、页脚
+%\hypersetup{colorlinks, bookmarks, unicode} %unicode
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\title{数值代数实验报告}
+\author{PB21010483 郭忠炜}
+
+\begin{document}
+\maketitle
+
+\section*{\centerline{一、问题描述}}
+
+\subsection*{Exercise1.1}
+
+编写计算矩阵一范数的程序，估计 5 到 20 阶 Hilbert 矩阵的∞范数条件数。
+
+\subsection*{Exercise1.2}
+
+生成5到30阶的矩阵A，随机生成x，计算b=Ax，然后利用列主元高斯消去法解决Ax=b的线性方程组，最后估计解的精度并计算真实相对误差。
+
+\section*{\centerline{二、程序介绍}}
+
+\subsection*{Exercise1.1}
+
+\subsubsection*{生成符号向量 (Sign Vector Generation):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{sign} 函数用于生成输入向量 $w$ 的符号向量，即返回一个与 $w$ 同样大小的向量，其中元素为 $w$ 中对应元素的符号。
+	\item \textbf{使用方式:} 调用 \texttt{sign(w)} 函数，传入向量 $w$，函数返回符号向量。
+\end{itemize}
+
+\subsubsection*{计算向量内积 (Vector Inner Product):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{InnerProduct} 函数用于计算两个输入向量 $a$ 和 $b$ 的内积。
+	\item \textbf{使用方式:} 调用 \texttt{InnerProduct(a, b)} 函数，传入两个向量 $a$ 和 $b$，函数返回它们的内积。
+\end{itemize}
+
+\subsubsection*{计算向量无穷范数 (Vector Infinity Norm):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{VectorInfinityNorm} 函数用于计算输入向量 $vec$ 的无穷范数，即返回 $vec$ 中绝对值最大的元素。
+	\item \textbf{使用方式:} 调用 \texttt{VectorInfinityNorm(vec)} 函数，传入向量 $vec$，函数返回无穷范数。
+\end{itemize}
+
+\subsubsection*{计算向量一范数 (Vector One Norm):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{VectorOneNorm} 函数用于计算输入向量 $vec$ 的一范数，即返回 $vec$ 中所有元素的绝对值之和。
+	\item \textbf{使用方式:} 调用 \texttt{VectorOneNorm(vec)} 函数，传入向量 $vec$，函数返回一范数。
+\end{itemize}
+
+\subsubsection*{生成对应下标为1单位向量 (Unit Vector Generation):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{UnitVectorGenerating} 函数用于生成一个与输入向量 $vec$ 同样大小的单位向量，其中单位向量的值对应于 $vec$ 的无穷范数下标。
+	\item \textbf{使用方式:} 调用 \texttt{UnitVectorGenerating(vec, n)} 函数，传入向量 $vec$ 和整数 $n$，函数返回单位向量。
+\end{itemize}
+
+\subsubsection*{计算矩阵一范数 (Matrix One Norm):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{MatrixOneNorm} 函数用于计算输入矩阵 $A$ 的一范数，即返回 $A$ 中每列元素的绝对值之和的最大值。
+	\item \textbf{使用方式:} 调用 \texttt{MatrixOneNorm(n, A)} 函数，传入整数 $n$ 和矩阵 $A$，函数返回一范数。
+\end{itemize}
+
+\subsubsection*{计算矩阵无穷范数 (Matrix Infinity Norm):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{MatrixInfinityNorm} 函数用于计算输入矩阵 $matrix$ 的无穷范数，即返回 $matrix$ 中每行元素的绝对值之和的最大值。
+	\item \textbf{使用方式:} 调用 \texttt{MatrixInfinityNorm(matrix)} 函数，传入矩阵 $matrix$，函数返回无穷范数。
+\end{itemize}
+
+\subsection*{Exercise1.2}
+
+\subsubsection*{矩阵向量乘法 (Matrix-Vector Multiplication):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{MatrixVectorMultiply} 函数用于计算矩阵 $A$ 和向量 $b$ 的乘积，返回一个向量。
+	\item \textbf{使用方式:} 调用 \texttt{MatrixVectorMultiply(A, b)} 函数，传入矩阵 $A$ 和向量 $b$，函数返回乘积向量。
+\end{itemize}
+
+\subsubsection*{向量减法 (Vector Subtraction):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{VectorSubtraction} 函数用于计算两个输入向量 $x$ 和 $y$ 的差，返回一个向量。
+	\item \textbf{使用方式:} 调用 \texttt{VectorSubtraction(x, y)} 函数，传入两个向量 $x$ 和 $y$，函数返回它们的差向量。
+\end{itemize}
+
+除了上面列举的函数之外，我还调用了第一章作业中定义的函数，比如生成Hilbert矩阵、矩阵转置和方程求解有关的程序。
+
+\section*{\centerline{三、实验结果}}
+
+\subsection*{Exercise1.1}
+
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		\textbf{矩阵规模} & \textbf{∞范数条件数} \\
+		\midrule
+		5             & 943656          \\
+		6             & 2.90703e+07     \\
+		7             & 9.85195e+08     \\
+		8             & 3.38728e+10     \\
+		9             & 1.09965e+12     \\
+		10            & 3.53525e+13     \\
+		11            & 1.22961e+15     \\
+		12            & 3.82265e+16     \\
+		13            & 5.50049e+17     \\
+		14            & 3.19705e+18     \\
+		15            & 1.02714e+18     \\
+		16            & 6.27368e+18     \\
+		17            & 3.80892e+18     \\
+		18            & 4.3539e+18      \\
+		19            & 4.43764e+18     \\
+		20            & 4.45685e+18    \\
+		\bottomrule
+	\end{tabular}
+	\caption{5 到 20 阶 Hilbert 矩阵的∞范数条件数}
+	\label{tab:my-table}
+\end{table}
+
+\subsection*{Exercise1.2}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}[c]{ccc}
+	\toprule
+	\textbf{矩阵规模} & \textbf{估计精度} & \textbf{真实精度} \\
+	\endfirsthead
+	%
+	\endhead
+	%
+	\midrule
+	5             & 1.39355e-15   & 5.37651e-16   \\
+	6             & 3.99934e-16   & 2.03221e-16   \\
+	7             & 4.44164e-16   & 2.05858e-16   \\
+	8             & 3.4203e-15    & 1.41432e-15   \\
+	9             & 3.35443e-16   & 2.25212e-16   \\
+	10            & 1.14152e-14   & 4.78374e-15   \\
+	11            & 1.39223e-14   & 5.84474e-15   \\
+	12            & 1.3475e-13    & 6.0411e-14    \\
+	13            & 7.64566e-14   & 3.19566e-14   \\
+	14            & 7.04473e-14   & 3.33849e-14   \\
+	15            & 1.34147e-12   & 6.02681e-13   \\
+	\bottomrule
+	\newpage
+	\toprule
+	16            & 8.65455e-14   & 3.94364e-14   \\
+	17            & 7.7722e-12    & 2.86122e-12   \\
+	18            & 1.837e-12     & 9.30363e-13   \\
+	19            & 1.2035e-13    & 7.6454e-14    \\
+	20            & 1.2426e-11    & 6.55229e-12   \\
+	21            & 3.1232e-11    & 1.52572e-11   \\
+	22            & 6.02992e-11   & 2.64836e-11   \\
+	23            & 6.42282e-11   & 3.59628e-11   \\
+	24            & 4.12898e-10   & 2.23124e-10   \\
+	25            & 1.04553e-09   & 4.87306e-10   \\
+	26            & 2.61624e-10   & 1.03894e-10   \\
+	27            & 1.2612e-10    & 6.56837e-11   \\
+	28            & 3.04428e-10   & 1.72571e-10   \\
+	29            & 3.63452e-09   & 1.52792e-09   \\
+	30            & 6.48284e-09   & 3.33615e-09  \\
+	\bottomrule
+	\caption{矩阵规模为5$\sim$30时的估算精度与真实精度}
+	\label{tab:my-table}\\
+\end{longtable}
+
+
+
+\section*{\centerline{四、结果分析}}
+
+\subsection*{Exercise1.1}
+
+从运算结果来看，Hilbert∞范数条件数随着矩阵规模增大到14，其数量级迅速增大到1e+18，之后稳定在改数量级，这可能是由于Hilbert矩阵本身的性质。
+
+\subsection*{Exercise1.2}
+
+随着矩阵规模的增大，可以观察到估算精度和真实精度表现出了同步的增大，数量级上从$n=5$时的$1e-15$上涨到了$n=30$时$1e-9$, 但是估算精度与真实精度之间的比例几乎保持不变。
+
+
+\end{document}

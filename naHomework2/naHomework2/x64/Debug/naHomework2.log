@@ -1,0 +1,6 @@
+﻿  exercise.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework2\naHomework2\function.h(1,1): warning C4828: 文件包含在偏移 0x947 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  naHomework2.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework2\naHomework2\function.h(1,1): warning C4828: 文件包含在偏移 0x947 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  正在生成代码...
+  naHomework2.vcxproj -> D:\Autumn of 2023\Numerical Algebra\naHomework2\x64\Debug\naHomework2.exe

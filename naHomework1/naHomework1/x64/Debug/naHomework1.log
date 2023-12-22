@@ -1,0 +1,3 @@
+﻿  exercise.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework1\naHomework1\function.h(1,1): warning C4828: 文件包含在偏移 0x51f 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  naHomework1.vcxproj -> D:\Autumn of 2023\Numerical Algebra\naHomework1\x64\Debug\naHomework1.exe

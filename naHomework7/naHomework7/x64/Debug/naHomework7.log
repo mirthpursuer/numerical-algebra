@@ -1,0 +1,8 @@
+﻿  exercise.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework7\naHomework7\exercise.cpp(669,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework7\naHomework7\exercise.cpp(670,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework7\naHomework7\exercise.cpp(822,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework7\naHomework7\exercise.cpp(831,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework7\naHomework7\exercise.cpp(840,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework7\naHomework7\exercise.cpp(1072,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  naHomework7.vcxproj -> D:\Autumn of 2023\Numerical Algebra\naHomework7\x64\Debug\naHomework7.exe

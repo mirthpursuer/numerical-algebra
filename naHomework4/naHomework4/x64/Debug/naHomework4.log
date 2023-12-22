@@ -1,0 +1,47 @@
+﻿  exercise.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.h(1,1): warning C4828: 文件包含在偏移 0xe20 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\exercise.cpp(669,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\exercise.cpp(670,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  function.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.h(1,1): warning C4828: 文件包含在偏移 0xe20 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(8,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(9,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(39,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(52,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(72,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(85,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(104,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(120,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(179,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(233,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(258,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(280,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(298,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(299,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(313,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(337,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(348,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(491,17): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(492,17): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(508,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(535,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(601,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(602,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(677,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(678,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(703,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(704,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(727,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(745,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(771,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(786,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(787,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(788,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(789,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(817,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(818,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.cpp(856,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  naHomework4.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework4\naHomework4\function.h(1,1): warning C4828: 文件包含在偏移 0xe20 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  正在生成代码...
+  naHomework4.vcxproj -> D:\Autumn of 2023\Numerical Algebra\naHomework4\x64\Debug\naHomework4.exe

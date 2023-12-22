@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{float,indentfirst,verbatim,fancyhdr,graphicx,listings,longtable,amsmath, amsfonts,amssymb}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+\textheight 23.5cm \textwidth 15.8cm
+%\leftskip -1cm
+\topmargin -1.5cm \oddsidemargin 0.3cm \evensidemargin -0.3cm
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}   % 网页链接
+\usepackage{subcaption} % 子标题
+%\usepackage[a3paper, margin=2cm]{geometry}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry} %页边距
+\usepackage{helvet}
+\usepackage{amsmath, amsfonts, amssymb} % 数学公式、符号
+%\usepackage[english]{babel}
+\usepackage{graphicx}   % 图片
+\usepackage{url}        % 超链接
+\usepackage{bm}         % 加粗方程字体
+\usepackage{multirow}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{esint}
+\usepackage{hyperref} %bookmarks
+\usepackage{fancyhdr} %设置页眉、页脚
+%\hypersetup{colorlinks, bookmarks, unicode} %unicode
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\title{数值代数2019秋期末试题}
+\author{2019年12月27日}
+\date{}
+\begin{document}
+	\maketitle
+1.定义 $N(y,k)=I-ye_k^T$,其中 $I$ 为$ n $ 阶单位阵，$e_k$ 为$ I $ 的第 $k$ 列形成的向量，$y\in\mathbb{R}^n(20$ 分)
+
+(a) 假定 $N(y,k)$ 非奇异，给出计算其逆的公式；
+
+(b) 向量 $x\in\mathbb{R}^n$ 满足何种条件才能保证存在 $y\in\mathbb{R}^n$ 使得$N\left(y,k\right)x=e_{k}$?
+
+(c) 请给出利用这里定义的变换 $N(y,k)$ 计算矩阵 $A\in\mathbb{R}^{n\times n}$ 的逆矩阵的算法，并且说明 $A$ 满足何种条件才能保证算法能够进行到底。
+
+2. 设计算机所采用浮点数基底为 $\beta$, $\mathbf{u}$表示机器精度，$x$ 为实数，$fl\left(x\right)$ 为其浮点数表示 (10 分)
+
+(a)给出机器精度 u 的定义；
+
+(b)证明存在$\delta$满足
+
+$$
+fl(x)=\frac{x}{1+\delta},\quad|\delta|\leqslant\mathbf{u}.
+$$
+
+3.证明：对于任意 $n$ 阶可逆矩阵 $A$,其基于任意矩阵范数的条件数都不会小于1.(10分)
+
+4.设 $x, y$是$\mathbb{R} ^n$ 中的两个非零向量，给出一个算法确定一个Householder 变换 $H$, 使得 $Hx=\alpha y$,其中 $\alpha>0.(10$ 分)
+
+5.若存在对称正定矩阵 $P$,使得 $B=P-H^TPH $为对称正定矩阵，证明迭代法：
+
+$$
+x_{k+1}=Hx_{k}+b,\quad k=0,1,2,\ldots 
+$$
+
+收敛，并说明收敛极限是什么。(15 分)
+
+6.证明：当对矩阵 $A$ 应用最速下降法在有限步求得极小值时，最后一步迭代的下降方向必是 $A$ 的一个特征向量。(10 分)
+
+7.(15分)
+
+(a) 简述基于 QR 分解的原始 QR 算法，并说明在隐式 QR 算法中如何实现了不再显式调用 QR 分解。
+
+(b) 能否基于 LU 分解给出计算矩阵特征值的算法？ 并对算法进行评价。
+
+
+8.定义矩阵
+
+$$\left.M=\left(\begin{array}{ccc}\alpha_1&\beta_2&0\\\beta_2&\alpha_2&\beta_3\\0&\beta_3&\alpha_3\end{array}\right.\right).$$
+
+证明：M 有重特征根当且仅当 $\beta_{2}\beta_{3}= 0.( 10$分$) $
+
+\end{document}

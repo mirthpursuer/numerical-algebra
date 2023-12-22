@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{float,indentfirst,verbatim,fancyhdr,graphicx,listings,longtable,amsmath, amsfonts,amssymb}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+\textheight 23.5cm \textwidth 15.8cm
+%\leftskip -1cm
+\topmargin -1.5cm \oddsidemargin 0.3cm \evensidemargin -0.3cm
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}   % 网页链接
+\usepackage{subcaption} % 子标题
+%\usepackage[a3paper, margin=2cm]{geometry}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry} %页边距
+\usepackage{helvet}
+\usepackage{amsmath, amsfonts, amssymb} % 数学公式、符号
+%\usepackage[english]{babel}
+\usepackage{graphicx}   % 图片
+\usepackage{url}        % 超链接
+\usepackage{bm}         % 加粗方程字体
+\usepackage{multirow}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{esint}
+\usepackage{hyperref} %bookmarks
+\usepackage{fancyhdr} %设置页眉、页脚
+%\hypersetup{colorlinks, bookmarks, unicode} %unicode
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\title{数值代数2022秋期末试题}
+\author{2022年12月9日}
+\date{}
+\begin{document}
+	\maketitle
+一.(10分) 已知
+$$
+A\in C^{n\times n},||A||_*<1,||I||_*=1
+$$
+
+证明
+
+1. 对所有的范数，都有
+
+$$
+\begin{aligned}\rho(A)\leq||A||\end{aligned}
+$$
+
+2.
+
+$$||(I-A)^{-1}-\sum_{k=0}^mA^k||_*\leq\frac{||A||_*^{m+1}}{1-||A||_*}$$
+
+注记：都是书上的简单定理 (定义课本上证明长度不超过半页纸的定理是简单定理).
+
+二.(10分)
+$$
+\begin{aligned}A\in R^{n\times n},A=4I+2J_n(0)-J_n(0)^T\end{aligned}
+$$
+
+证明：在 $w\in(0,1)$ 的时候 SOR 迭代法是收敛的。
+
+注记：本质是证明对角严格占优阵的 SOR 收敛定理，属于书上简单定理的证明.
+
+三.(20分)
+
+$$A=\begin{pmatrix}\frac{11}{5}&\frac{-4}{5}&\frac{2}{5}&\frac{-2}{5}\\\frac{-2}{5}&\frac{8}{5}&\frac{1}{5}&\frac{-1}{5}\\-2&2&1&-4\\\frac{-18}{5}&\frac{12}{5}&\frac{-6}{5}&\frac{-9}{5}\end{pmatrix},X=\begin{pmatrix}1&0&-1&0\\0&1&-1&0\\1&2&1&1\\-1&0&0&1\end{pmatrix}$$
+
+证明：
+
+1. $X^{-1}AX$ 是对角阵
+
+2. 写出 $A$ 用幂法作用在初始向量后得到的向量序列，并且证明 $X^{-1}A$没有 $0$ 分量的时候，序列存在两个收敛子列
+
+3. 说出上述收敛子列极限和 $A$ 的特征向量的关系
+
+注记：如果熟悉幂法的话，自然不难知道迭代向量列长什么样。（事实上，课本证明幂法收敛定理的时候就做了和这题类似的操作)
+
+四.(15 分) 
+
+
+$A$是$r$个$Household$变换的乘积，证明有分解式$A=I-WV^T$其中$ W,V $都是$ n×r$ 的矩阵 
+
+注记：一道比较考验线性代数功夫的题目，需要一定的手法。
+
+五. (10 分)
+
+$H$ 是不可约的上 $Hesse$ 阵，证明存在对角阵把他相似到下次对角元都是 1 的上$ Hesse $阵
+
+注记：一道有手就行的题目。
+
+六.  (20 分)
+
+课本第一章 16 题
+
+注记：不算特别困难的作业题，至少不是解题中特别多不平凡步骤的作业题。
+
+七.(15分)
+
+$ A $有$ k$ 个互异的特征值，是 $n$ 阶方阵，$r$ 是 $n$ 阶向量，证明
+$$
+\begin{aligned}dim(span(r,Ar,\cdots,A^{n-1}r))\leq k\end{aligned}
+$$
+
+注记：不算特别困难的作业题，有线代功夫就可以做。
+
+\end{document}

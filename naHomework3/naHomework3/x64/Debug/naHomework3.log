@@ -1,0 +1,6 @@
+﻿  exercise.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework3\naHomework3\function.h(1,1): warning C4828: 文件包含在偏移 0x9aa 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  naHomework3.cpp
+D:\Autumn of 2023\Numerical Algebra\naHomework3\naHomework3\function.h(1,1): warning C4828: 文件包含在偏移 0x9aa 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  正在生成代码...
+  naHomework3.vcxproj -> D:\Autumn of 2023\Numerical Algebra\naHomework3\x64\Debug\naHomework3.exe

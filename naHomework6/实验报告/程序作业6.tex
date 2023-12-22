@@ -1,0 +1,273 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{float,indentfirst,verbatim,fancyhdr,graphicx,listings,longtable,amsmath, amsfonts,amssymb}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+\textheight 23.5cm \textwidth 15.8cm
+%\leftskip -1cm
+\topmargin -1.5cm \oddsidemargin 0.3cm \evensidemargin -0.3cm
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}   % 网页链接
+\usepackage{subcaption} % 子标题
+%\usepackage[a3paper, margin=2cm]{geometry}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry} %页边距
+\usepackage{helvet}
+\usepackage{amsmath, amsfonts, amssymb} % 数学公式、符号
+%\usepackage[english]{babel}
+\usepackage{graphicx}   % 图片
+\usepackage{url}        % 超链接
+\usepackage{bm}         % 加粗方程字体
+\usepackage{multirow}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{esint}
+\usepackage{hyperref} %bookmarks
+\usepackage{fancyhdr} %设置页眉、页脚
+%\hypersetup{colorlinks, bookmarks, unicode} %unicode
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\title{数值代数实验报告}
+\author{PB21010483 郭忠炜}
+
+\begin{document}
+\maketitle
+
+\section*{\centerline{一. 问题描述}}
+
+\subsection*{Exercise1}
+
+用 C++ 编制利用幂法求多项式方程 
+$f(x) = x^n + \alpha_{n-1}x^{n-1} +\cdots+ \alpha_1 x + \alpha_0 = 0 $
+的模最大根的通用子程序，并利用你所编制的子程序求下列各高次方程的模最大根，要求输出迭代次数，用时和最大根的值。
+
+\subsection*{Exercise2}
+
+通过编写使用隐式 QR 算法的 C++ 子程序，求解实矩阵的全部特征值。对于高次方程，将其求根问题转化为友矩阵的特征根求解问题后计算方程的全部根；对于给定矩阵A，讨论对其中元素进行微扰之后特征值实部、虚部和模长的变化情况，要求输出迭代次数、用时和所有特征值。
+
+%\newpage
+\section*{\centerline{二. 程序介绍}}
+
+\subsubsection*{将多项式转化为特征多项式矩阵}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{equation\_to\_matrix} 函数将给定的首一多项式转换为其特征多项式对应的矩阵。
+	\item \textbf{使用方式:} 调用 \texttt{equation\_to\_matrix(equation)} 函数，传入首一多项式系数向量 \texttt{equation}，函数将返回特征多项式对应的矩阵。
+\end{itemize}
+%此函数通过传入的首一多项式系数向量构建特征多项式矩阵。对于给定的长度为 $m$ 的多项式向量，函数生成一个 $m \times m$ 的矩阵 $A$，其中 $A_{1,i}$ 为多项式系数的相反数，$A_{i+1,i} = 1$，其余元素为零。
+
+\subsubsection*{找到向量的最大模分量}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{maxModulus} 函数用于查找给定向量的最大模分量。
+	\item \textbf{使用方式:} 使用 \texttt{maxModulus(vec)} 函数，传入一个向量 \texttt{vec}，函数将返回该向量的最大模分量。
+\end{itemize}
+%该函数遍历给定向量，找到并返回向量中的最大模分量。
+
+\subsubsection*{使用幂法求解矩阵的最大特征值}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{powerMethod} 函数使用幂法计算给定矩阵的最大特征值。
+	\item \textbf{使用方式:} 使用 \texttt{powerMethod(matrix)} 函数，传入一个矩阵 \texttt{matrix}，函数将返回矩阵的最大特征值。
+\end{itemize}
+%该函数通过迭代运算和归一化向量的方式，寻找并返回给定矩阵的最大特征值。
+
+\subsubsection*{提取子矩阵}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{getSubMatrix} 函数用于从给定矩阵中提取子矩阵。
+	\item \textbf{使用方式:} 使用 \texttt{getSubMatrix(A, startRow, endRow, startCol, endCol)} 函数，传入矩阵 \texttt{A} 和子矩阵的起止行列索引，函数将返回相应的子矩阵。
+\end{itemize}
+%该函数从给定矩阵中提取指定区域的子矩阵，并返回提取的子矩阵。
+
+\subsubsection*{赋值子矩阵}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{setSubMatrix} 函数用于将子矩阵赋值到给定矩阵的指定位置。
+	\item \textbf{使用方式:} 使用 \texttt{setSubMatrix(A, submatrix, startRow, startCol)} 函数，传入矩阵 \texttt{A}、子矩阵 \texttt{submatrix}，以及子矩阵在矩阵 \texttt{A} 中的起始行列索引，函数将在指定位置赋值子矩阵。
+\end{itemize}
+%该函数将给定的子矩阵 \texttt{submatrix} 赋值到指定矩阵 \texttt{A} 的起始行列位置。
+
+\subsubsection*{计算上 Hessenberg 分解}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{hessenberg} 函数计算给定矩阵的上 Hessenberg 分解。
+	\item \textbf{使用方式:} 使用 \texttt{hessenberg(A)} 函数，传入矩阵 \texttt{A}，函数将对矩阵执行上 Hessenberg 分解。
+\end{itemize}
+%该函数对给定矩阵执行上 Hessenberg 分解，并修改原始矩阵以得到上 Hessenberg 形式的矩阵。
+
+\subsubsection*{双重步位移的 QR 迭代}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{doubleShiftQR} 函数执行双重步位移的 QR 迭代。
+	\item \textbf{使用方式:} 使用 \texttt{doubleShiftQR(H)} 函数，传入矩阵 \texttt{H}，执行双重步位移的 QR 迭代。
+\end{itemize}
+%该函数利用双重步位移的 QR 迭代方法对给定矩阵进行迭代计算。
+
+\subsubsection*{判断特征值是否为实数}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{areEigenvaluesReal} 函数用于判断给定矩阵的特征值是否为实数。
+	\item \textbf{使用方式:} 使用 \texttt{areEigenvaluesReal(A)} 函数，传入矩阵 \texttt{A}，函数将返回一个布尔值，表示矩阵的特征值是否为实数。
+\end{itemize}
+%该函数通过计算矩阵的判别式来判断特征值是否为实数。
+
+
+\subsubsection*{将矩阵中满足条件的次对角元置零}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{zeroing} 函数用于将给定矩阵 \texttt{A} 中满足条件的次对角元素置零。
+	\item \textbf{使用方式:} 使用 \texttt{zeroing(A, u)} 函数，传入矩阵 \texttt{A} 和条件参数 \(u\)，执行操作。
+\end{itemize}
+
+\subsubsection*{判断二维矩阵块是否是准上三角阵的对角元素}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{isQuasi} 函数用于判断给定的二维矩阵块是否是准上三角阵的对角元素。
+	\item \textbf{使用方式:} 使用 \texttt{isQuasi(A)} 函数，传入矩阵 \texttt{A}，返回布尔值表示是否为准上三角阵。
+\end{itemize}
+
+\subsubsection*{判断矩阵块是否是拟上三角阵}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{quasii} 函数用于判断给定矩阵块是否是拟上三角阵。
+	\item \textbf{使用方式:} 使用 \texttt{quasii(H, m)} 函数，传入矩阵块 \texttt{H} 和维数参数 \texttt{m}。
+\end{itemize}
+
+\subsubsection*{找到拟上三角阵 H33 的最大维数}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{quasi} 函数用于找到拟上三角阵 \texttt{H33} 的最大维数。
+	\item \textbf{使用方式:} 使用 \texttt{quasi(H)} 函数，传入矩阵 \texttt{H}。
+\end{itemize}
+
+\subsubsection*{判断是否是不可约 Hessenberg 矩阵}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{isHessenberg} 函数用于判断给定矩阵是否是不可约 Hessenberg 矩阵。
+	\item \textbf{使用方式:} 使用 \texttt{isHessenberg(A)} 函数，传入矩阵 \texttt{A}。
+\end{itemize}
+
+\subsubsection*{找到不可约 Hessenberg 矩阵 H22 的最大维数}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{IrredHessenberg} 函数用于找到不可约 Hessenberg 矩阵 \texttt{H22} 的最大维数。
+	\item \textbf{使用方式:} 使用 \texttt{IrredHessenberg(H, quasi)} 函数，传入矩阵 \texttt{H} 和最大维数参数 \texttt{quasi}。
+\end{itemize}
+
+\subsubsection*{提取不可约 Hessenberg 矩阵 H22}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{getHessenberg} 函数用于提取不可约 Hessenberg 矩阵 \texttt{H22}。
+	\item \textbf{使用方式:} 使用 \texttt{getHessenberg(H, m)} 函数，传入矩阵 \texttt{H} 和维数参数 \texttt{m}，返回矩阵 \texttt{H22}。
+\end{itemize}
+
+\subsubsection*{把 QR 迭代后的 H22 赋值到矩阵的对应位置}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{setHessenberg} 函数用于将 QR 迭代后的矩阵 \texttt{A} 中的 \texttt{H22} 赋值到矩阵的对应位置。
+	\item \textbf{使用方式:} 使用 \texttt{setHessenberg(H, A, m)} 函数，传入矩阵 \texttt{H}、矩阵 \texttt{A} 和维数参数 \texttt{m}。
+\end{itemize}
+
+\subsubsection*{求解二阶矩阵的复特征值}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{eigenvalues2D} 函数用于求解二阶矩阵的复特征值。
+	\item \textbf{使用方式:} 使用 \texttt{eigenvalues2D(A)} 函数，传入矩阵 \texttt{A}。
+\end{itemize}
+
+\subsubsection*{输出 QR 迭代后得到矩阵的特征值}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{prEigens} 函数用于输出 QR 迭代后得到矩阵的特征值。
+	\item \textbf{使用方式:} 使用 \texttt{prEigens(A)} 函数，传入矩阵 \texttt{A}。
+\end{itemize}
+
+\subsubsection*{隐式 QR 迭代}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{implicitQR} 函数用于执行隐式 QR 迭代，并返回迭代次数。
+	\item \textbf{使用方式:} 使用 \texttt{implicitQR(A)} 函数，传入矩阵 \texttt{A}。
+\end{itemize}
+
+
+
+
+
+\section*{\centerline{三. 实验结果}}
+\subsection*{Exercise1}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{多项式方程} & \textbf{模最大根} & \textbf{迭代次数} & \textbf{运行时间/s} \\
+		\hline
+		$x^3 + x^2 - 5x + 3 = 0$ & -3 & 18 & 0.002 \\
+		\hline
+		$x^3 - 3x - 1 = 0$ & 1.87939 & 50 & 0.002 \\
+		\hline
+		\begin{tabular}[h]{@{}c}$x^8 + 101x^7 + 208.01x^6 + 10891.01x^5 + 9802.08x^4$ \\ $ + 79108.9x^3 -99902x^2 + 790x - 1000 = 0$\end{tabular} & -99.9999 & 7 & 0.003 \\
+		\hline
+	\end{tabular}
+	\label{tab:polynomial_iterations}
+	\caption{多项式方程的模最大根求解}
+\end{table}
+
+
+\subsection*{Exercise2}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{3}{|c|}{$x^{41} + x^3 + 1 = 0 $的全部解} \\
+		\hline
+		$1.0143 \pm 0.0809229i$ & $0.987184 \pm 0.240354i$ & $0.933664 \pm 0.392547i$ \\
+		\hline
+		$0.855158 \pm 0.532633i$ & $0.753719 \pm 0.655382i$ & $0.632341 \pm 0.753399i$ \\
+		\hline
+		$0.507574 \pm 0.810574i$ & $0.417146 \pm 0.871067i$ & $0.289812 \pm 0.946424i$ \\
+		\hline
+		$0.139165 \pm 0.992477i$ & $-0.0197285 \pm 1.00935i$ & $-0.180206 \pm 0.997962i$ \\
+		\hline
+		$-0.336984 \pm 0.959228i$ & $-0.48528 \pm 0.894538i$ & $-0.620673 \pm 0.805889i$ \\
+		\hline
+		$-0.739101 \pm 0.695904i$ & $-0.836863 \pm 0.567826i$ & $-0.910511 \pm 0.425528i$ \\
+		\hline
+		$-0.956339 \pm 0.27378i$ & $-0.968117 \pm 0.120857i$ & $-0.952529$ \\
+		\hline
+		迭代次数: 64 & \multicolumn{2}{|c|}{运行时间: 0.088 seconds}	 \\
+		\hline
+	\end{tabular}
+	\caption{求解方程的全部根}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$x = 0.9$ & \multicolumn{2}{c|}{迭代次数: 4} & 运行时间: 0.001 seconds. \\
+		\hline
+		特征值 & $17.4397$ & $6.81952$ & $2.87039 \pm 0.642891i$ \\
+		特征值模长 & $17.4397$ & $6.81952$ & $2.94150$ \\
+		\hline
+		$x = 1.0$ & \multicolumn{2}{c|}{迭代次数: 3} & 运行时间: 0.004 seconds. \\
+		\hline
+		特征值 & $17.4765$ & $6.78713$ & $2.86818 \pm 0.688741i$ \\
+		\hline
+		特征值模长 & $17.4765$ & $6.78713$ & $2.94972$ \\
+		\hline
+		$x = 1.1$ & \multicolumn{2}{c|}{迭代次数: 3} & 运行时间: 0.007 seconds. \\
+		\hline
+		特征值 & $17.5131$ & $6.75589$ &  $2.86553 \pm 0.732149i$\\
+		\hline
+		特征值模长 & $17.5131$ & $6.75589$ &  $2.95756$\\
+		\hline
+	\end{tabular}
+	\caption{求解矩阵的特征值}
+\end{table}
+
+\newpage
+\section*{\centerline{四. 结果分析}}
+
+\subsection*{Exercise1}
+
+可以观察到迭代次数和运行时间和多项式本身的次数没有明显的正相关关系，其中方程$x^3 - 3x - 1 = 0$的迭代次数较多可能是因为方程的根之间的间隔，使得求解过程更为复杂，需要更多的迭代来收敛到正确的根附近。
+
+\subsection*{Exercise2.1}
+我通过隐式 QR 算法求解得到41次多项式方程 $x^{41} + x^3 + 1 = 0 $的全部 41 个根。在 64 次迭代的情况下，以不错的速度在 0.088 秒内完成了对复杂方程根的求解。
+
+\subsection*{Exercise2.2}
+
+根据给定矩阵A进行微扰后的实验结果，我们可以观察到微小的输入微扰（在这里由x的变化引起）对特征值产生了显著的影响。随着微扰参数x从0.9逐渐增加到1.1，我们看到特征值的实部和虚部都出现了变化。实部从17.4397逐步增加到17.5131，虚部则由0.642891i增加到0.732149i，同时模长也随之稍微增加。
+
+\end{document}

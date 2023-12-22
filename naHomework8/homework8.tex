@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{float,indentfirst,verbatim,fancyhdr,graphicx,listings,longtable,amsmath, amsfonts,amssymb}
+
+\textheight 23.5cm \textwidth 15.8cm
+%\leftskip -1cm
+\topmargin -1.5cm \oddsidemargin 0.3cm \evensidemargin -0.3cm
+
+%\pagestyle{fancy} \lhead{FDM Homework Template} \chead{}
+%\rhead{\bfseries}
+%
+%\lfoot{} \cfoot{} \rfoot{\thepage}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.4pt}
+%
+\title{homework8}
+\author{游瀚哲}
+
+\begin{document}
+\maketitle
+
+\section*{一、作业要求}
+
+参考课本 7.6.2 节 (P234-240)SVD 迭代完成 SVD 算法 7.6.3, 并对附件 svddata.txt 中的矩阵作 SVD 分解 
+$A = P\Sigma Q$。并计算 $PP^T-I, QQ^T-I, P\Sigma Q-A$ 的绝对值最大的元素，依次用ep, eq, et 表示。
+
+\textbf{要求输出迭代次数，从小到大排序的所有奇异值以及上面要求的三个值。}
+
+输出格式为：(可以更详细，不能比下面的简单)
+
+迭代次数：x
+
+奇异值从小到大：
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+ep = xx
+
+eq = xx
+
+et = xx
+
+以下内容不需要在报告中给出，但要在上交的程序中输出。
+
+A=PTQ(可以用别的字母，但是要在最上面说明)
+
+T=
+
+[矩阵]
+
+P=
+
+[矩阵]
+
+Q=
+
+[矩阵]
+
+
+\section*{二、作业涉及的算法}
+
+必须实现的算法:
+参考课本 7.6.2 节 (P234-240)SVD 迭代完成 SVD 算法 7.6.3
+
+\textbf{务必先看懂算法的描述再写代码!!!}
+
+
+\section*{三、附加说明}
+1. 尽量使用 c++ 和 visual studio。
+
+2. 本次作业最迟ddl 为 \textbf{2024.1.6(周六)23:59} ，请大家尽早提交。超时作业没有特殊情况者拒收。
+\textbf{请注意，这也是所有作业的最后补交ddl!!!迟交作业得分*0.6。}
+
+3. 请确保你的程序能顺利跑出正确的结果再上交！
+可以用 Mathematica/Matlab 等工具来验证你的解是否正确。
+
+4. 没有报告的程序作业不予批改,报告一定要交pdf版本。
+
+\end{document}

@@ -1,0 +1,220 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{float,indentfirst,verbatim,fancyhdr,graphicx,listings,longtable,amsmath, amsfonts,amssymb}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{lscape}
+\textheight 23.5cm \textwidth 15.8cm
+%\leftskip -1cm
+\topmargin -1.5cm \oddsidemargin 0.3cm \evensidemargin -0.3cm
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}   % 网页链接
+\usepackage{subcaption} % 子标题
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry} %页边距
+\usepackage{helvet}
+\usepackage{amsmath, amsfonts, amssymb} % 数学公式、符号
+%\usepackage[english]{babel}
+\usepackage{graphicx}   % 图片
+\usepackage{url}        % 超链接
+\usepackage{bm}         % 加粗方程字体
+\usepackage{multirow}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{esint}
+\usepackage{hyperref} %bookmarks
+\usepackage{fancyhdr} %设置页眉、页脚
+%\hypersetup{colorlinks, bookmarks, unicode} %unicode
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\title{数值代数实验报告}
+\author{PB21010483 郭忠炜}
+
+\begin{document}
+\maketitle
+
+\section*{\centerline{一. 问题描述}}
+
+\subsection*{Exercise1.1}
+
+编写通用的QR分解算法子程序，将系数矩阵分解为正交矩阵Q和上三角矩阵R，然后编写子程序用于求解线性方程组。使用这些程序解决第一章上级习题中的三个方程组，比较各方法的结果，评估它们的优劣，输出计算结果、误差和运行时间。
+
+\subsection*{Exercise1.2}
+
+利用QR分解算法子程序，编写求解最小二乘线性问题的程序，以二次多项式形式 $y = a t^2 + b t + c$ 来拟合第二题的数据，以使残差向量的二范数最小化。需要输出拟合的参数 $a$、$b$、$c$，残差向量的二范数（表示拟合的好坏），以及程序的运行时间。
+
+\subsection*{Exercise1.3}
+
+使用线性模型 $y = x_0 + a_1x_1 + a_2x_2 + \ldots + a_{11}x_{11}$ 来拟合第三题的数据，并求出模型中参数 $x_0, x_1, \ldots, x_{11}$ 的最小二乘解。计算后输出参数的最小二乘结果，残差向量的二范数（表示拟合的好坏），以及程序的运行时间。
+
+\section*{\centerline{二. 程序介绍}}
+
+\subsection*{Exercise1.1}
+
+\subsubsection*{计算向量的Householder变换:}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{house} 函数用于对给定向量进行Householder变换。
+	\item \textbf{使用方式:} 调用 \texttt{house(x, v, beta)} 函数，传入向量 $x$ 和向量 $d$ 与double型变量$beta$ 作为输出参数，函数会计算Householder变化并将结果存储在 $v$ 和 $beta$ 中。
+\end{itemize}
+
+\subsubsection*{Householder方法的QR分解:}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{QRDecomposition} 函数用于对给定矩阵进行Householder方法的QR分解。
+	\item \textbf{使用方式:} 调用 \texttt{QRDecomposition(A, d)} 函数，传入矩阵 $A$ 和一个空的向量 $d$ 作为输出参数，函数会计算QR分解并将结果存储在 $A$ 和 $d$ 中。
+\end{itemize}
+
+\subsubsection*{QR方程求解:}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{QR\_equation\_solving} 函数用于通过QR分解求解线性方程组。
+	\item \textbf{使用方式:} 调用 \texttt{QR\_equation\_solving(A, b)} 函数，传入系数矩阵 $A$ 和右侧向量 $b$，函数会使用QR分解计算方程组的解并返回结果。
+\end{itemize}
+
+\subsubsection*{QR分解的Householder矩阵生成:}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{HouseholdMatrix} 函数用于生成Householder矩阵。
+	\item \textbf{使用方式:} 调用 \texttt{HouseholdMatrix(A, d, k)} 函数，传入矩阵 $A$、向量 $d$ 和 $k$，函数会生成Householder矩阵并返回结果。
+\end{itemize}
+
+\subsection*{Exercise1.2 \& Exercise1.3}
+\subsubsection*{最小二乘问题求解:}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{LS\_proplem\_solving} 函数用于通过QR分解求解最小二乘问题。
+	\item \textbf{使用方式:} 调用 \texttt{LS\_proplem\_solving(A, b)} 函数，传入系数矩阵 $A$ 和右侧向量 $b$，函数会使用QR分解计算最小二乘问题的解并返回结果。
+\end{itemize}
+
+\subsubsection*{向量的二范数 (Vector Two-Norm):}
+\begin{itemize}
+	\item \textbf{函数描述:} \texttt{VectorTwoNorm} 函数用于计算输入向量的二范数。
+	\item \textbf{使用方式:} 调用 \texttt{VectorTwoNorm(x)} 函数，传入向量 $x$，函数会返回它的二范数。
+\end{itemize}
+
+\section*{\centerline{三. 实验结果}}
+
+\subsection*{Exercise1.1}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{cccccccc}
+		\hline
+		\multirow{3}{*}{求解方程1} & 矩阵规模 & 10          & 30          & 50       & 55      & 56     & 84     \\ \cline{2-8} 
+		& 计算误差 & 1.64313e-14 & 5.35813e-07 & 0.658149 & 30.5912 & inf    & inf    \\
+		& 运行时间 & 0.004s      & 0.066s      & 0.413s   & 0.71s   & 0.997s & 2.825s \\ \hline
+	\end{tabular}
+	\caption{QR分解求解方程1}
+	\label{tab:my-table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{@{}cccc@{}}
+			\toprule
+			求解84阶的方程1 & 不选主元        & 全主元         & 列主元         \\ \midrule
+			计算误差      & 5.36838e+08 & 5.36838e+08 & 1.07374e+09 \\
+			运行时间      & 0.067s      & 0.073s      & 0.092s      \\ \bottomrule
+		\end{tabular}
+		\caption{Gauss消去求解方程1}
+		\label{tab:my-table}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ccccc}
+			\hline
+			\multirow{3}{*}{求解方程2} & 矩阵规模 & 10          & 50          & 100         \\ \cline{2-5} 
+			& 计算误差 & 3.50414e-16 & 4.44089e-16 & 5.55112e-16 \\
+			& 运行时间 & 0.007s      & 0.255s      & 2.872s      \\ \hline
+		\end{tabular}
+		\caption{QR分解求解方程2}
+		\label{tab:my-table}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cccc}
+			\hline
+			求解100阶的方程2 & 不选主元        & 全主元      & 列主元         \\ \hline
+			计算误差       & 2.22045e-16 & 0.808276 & 2.22045e-16 \\
+			运行时间       & 0.030s      & 0.116s   & 0.103s      \\ \hline
+		\end{tabular}
+		\caption{Gauss消去法求解方程2}
+		\label{tab:my-table}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cccccl}
+			\hline
+			\multirow{3}{*}{求解方程3} & 矩阵规模 & 10          & 13      & 20      & 40      \\ \cline{2-6} 
+			& 计算误差 & 0.000484919 & 9.15715 & 248.999 & 167.689 \\
+			& 运行时间 & 0.004s      & 0.013s  & 0.013s  & 0.099s  \\ \hline
+		\end{tabular}
+		\caption{QR分解求解方程3}
+		\label{tab:my-table}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cccc}
+			\hline
+			求解40阶的方程3 & 不选主元    & 全主元     & 列主元     \\ \hline
+			计算误差      & 115.617 & 929.253 & 115.617 \\
+			运行时间      & 0.003s  & 0.007s  & 0.005s  \\ \hline
+		\end{tabular}
+		\caption{Gauss消去法求解方程3}
+		\label{tab:my-table}
+	\end{table}
+	
+\end{table}
+
+\subsection*{Exercise1.2}
+
+拟合多项式为：$y = t^2 + t + 1$, 残向量的二范数为：3.6545, 运行时间： 0.003 seconds.
+
+\subsection*{Exercise1.3}
+
+拟合得到的$x$为：
+
+\begin{center}
+	\begin{tabular}{|*{6}{c|}}
+		\hline
+		$x_0$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ \\
+		%\hline
+		2.07752 & 0.718888 & 9.6802 & 0.153506 & 13.6796 & 1.98683 \\
+		\hline
+		$x_6$ & $x_7$ & $x_8$ & $x_9$ & $x_{10}$ & $x_{11}$ \\%	\hline
+		-0.958225 & -0.484023 & -0.0736469 & 1.0187 & 1.44352 & 2.90279 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+房屋估价的拟合模型为：
+\begin{equation*}
+	\begin{split}
+		y = 2.07752+0.718888a1 + 9.6802a2 + 0.153506a3 + 13.6796a4 + 1.98683a5 \\
+		-0.958225a6  -0.484023a7  -0.0736469a8 + 1.0187a9 + 1.44352a10 + 2.90279a11
+	\end{split}
+\end{equation*}
+
+残向量的二范数为：16.3404
+运行时间： 0.071 seconds.
+
+\section*{\centerline{四. 结果分析}}
+
+\subsection*{Exercise1.1}
+
+在用 QR分解求解线性方程组时，对于给定的方程组1：当矩阵规模不大于30时，算法的求解误差保持在相当良好的范围之内；当矩阵规模达到50时，与精确解（全1向量）的误差已经不容忽视；而当矩阵达到56阶乃至更大之后，QR分解求解线性方程组的误差会出现$inf$。
+
+对比同规模矩阵的求解（实验结果中只展示了84阶方程1求解的计算误差和运行时间），Gauss消去表现出了一定的优越性。在矩阵规模较小时，Gauss消去与QR分解求解误差相差不大，运行时间为QR分解求解的两倍左右；当矩阵规模达到30时，QR分解求解的误差是Gauss消去的几百倍，而运行时间为Gauss消去的两倍多；当矩阵规模达到50时，Gauss消去的计算误差约为0.03左右，而QR分解求解约为0.66，不过二者的运行时间相近；但随着矩阵规模上涨到84，无论是QR分解求解还是Gauss消去，其解的误差都大到难以承受。对于方程2和方程3，Gauss消去也表现出了类似的优势。
+
+回顾Gauss消去与QR分解，Gauss消去具有更低的计算复杂度，而QR分解的主要优势是它在处理病态矩阵时具有更好的数值稳定性，因为它采用了正交变换来减少舍入误差的传播，这些特性在本次实验中亦有体现。
+
+总的来说，QR分解在处理小规模矩阵时具有较好的数值稳定性,随着矩阵规模的增加，计算复杂度急剧增加，可能导致数值不稳定性。相比之下，Gauss消去具有较低的计算复杂度，对于非病态矩阵可以在较大的规模下表现出较于QR分解的优势。
+
+\subsection*{Exercise1.2 \& Exercise1.3}
+
+对比两个问题的矩阵规模$(7*3$ 和 $28*12)$, 可以发现用QR分解编写线性最小二乘问题时，残向量二范数变化大致和矩阵规模变化成正比，而运行时间上随矩阵规模大致呈二次多项式变化趋势。
+
+\end{document}
